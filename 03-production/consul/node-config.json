@@ -1,0 +1,9 @@
+{
+	"Node": "node1", 
+	"Address": "localhost", 
+	"Service": {
+		"Service":"worker", 
+		"Port": 49153,
+		"Tags": ["foo", "bar"]
+	}
+}

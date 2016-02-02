@@ -1,0 +1,4 @@
+{
+	"acl_master_token": "mysupersecrettoken",
+	"acl_datacenter": "dc1"
+}

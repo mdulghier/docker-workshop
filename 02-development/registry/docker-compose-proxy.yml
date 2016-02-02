@@ -1,0 +1,16 @@
+mirror:
+  image: registry:2
+  ports: 
+  - "443:5000"
+  volumes:
+  - /opt/workshop/registry/ssl:/ssl
+  - /opt/workshop/registry/config.yml:/etc/docker/registry/config.yml
+  environment:
+  - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/domain.crt
+  - REGISTRY_HTTP_TLS_KEY=/ssl/domain.key
+  - REGISTRY_AUTH=token
+  - REGISTRY_AUTH_TOKEN_REALM=https://registry.trigo.internal:5001/auth
+  - REGISTRY_AUTH_TOKEN_SERVICE="Docker registry"
+  - REGISTRY_AUTH_TOKEN_ISSUER="Auth Service"
+  - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/domain.pem
+

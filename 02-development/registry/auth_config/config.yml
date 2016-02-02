@@ -1,0 +1,21 @@
+server:
+  addr: ":5001"
+  certificate: "/ssl/domain.pem"
+  key: "/ssl/domain.key"
+
+token:
+  issuer: "Auth Service"
+  expiration: 3600
+
+users:
+  "admin":
+    password: "$2a$10$rUmV7DPSHzW.Cb4osSK9.O8rgSAfd83KE4BazZteDDeH57rmGlNZ6"
+  "mdulghier":
+    password: "$2a$10$rUmV7DPSHzW.Cb4osSK9.O8rgSAfd83KE4BazZteDDeH57rmGlNZ6"
+
+acl:
+  - match: {account: "admin"}
+    actions: ["*"]
+  - match: {account: "/.+/", name: "${account}/*"}
+    actions: ["*"]
+

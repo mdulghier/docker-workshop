@@ -1,0 +1,24 @@
+dockerauth:
+  image: cesanta/docker_auth
+  ports:
+  - "5001:5001"
+  volumes:
+  - /opt/workshop/registry/auth_config:/config:ro
+  - /opt/workshop/registry/ssl:/ssl
+  command: /config/config.yml
+
+registry:
+  image: registry:2
+  ports: 
+  - "443:5000"
+  volumes:
+  - /opt/workshop/registry/ssl:/ssl
+  environment:
+  - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/domain.crt
+  - REGISTRY_HTTP_TLS_KEY=/ssl/domain.key
+  - REGISTRY_AUTH=token
+  - REGISTRY_AUTH_TOKEN_REALM=https://registry.trigo.internal:5001/auth
+  - REGISTRY_AUTH_TOKEN_SERVICE="Docker registry"
+  - REGISTRY_AUTH_TOKEN_ISSUER="Auth Service"
+  - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/ssl/domain.pem
+

@@ -1,0 +1,16 @@
+{
+	"Node": "node1", 
+	"Address": "172.17.42.1", 
+	"Service": {
+		"Service":"worker", 
+		"Port": 49153, 
+		"Tags": ["foo"]
+	}, 
+	"Check":{
+		"id":"httphealth", 
+		"name": "/", 
+		"http":"http://localhost:3000", 
+		"interval": "5s", 
+		"service_id": "worker"
+	}
+}
