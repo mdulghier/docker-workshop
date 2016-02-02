@@ -3,8 +3,8 @@ mirror:
   ports: 
   - "443:5000"
   volumes:
-  - /opt/workshop/registry/ssl:/ssl
-  - /opt/workshop/registry/config.yml:/etc/docker/registry/config.yml
+  - ./ssl:/ssl
+  - ./config.yml:/etc/docker/registry/config.yml
   environment:
   - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/domain.crt
   - REGISTRY_HTTP_TLS_KEY=/ssl/domain.key

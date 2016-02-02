@@ -3,8 +3,8 @@ dockerauth:
   ports:
   - "5001:5001"
   volumes:
-  - /opt/workshop/registry/auth_config:/config:ro
-  - /opt/workshop/registry/ssl:/ssl
+  - ./auth_config:/config:ro
+  - ./ssl:/ssl
   command: /config/config.yml
 
 registry:
@@ -12,7 +12,7 @@ registry:
   ports: 
   - "443:5000"
   volumes:
-  - /opt/workshop/registry/ssl:/ssl
+  - ./ssl:/ssl
   environment:
   - REGISTRY_HTTP_TLS_CERTIFICATE=/ssl/domain.crt
   - REGISTRY_HTTP_TLS_KEY=/ssl/domain.key
